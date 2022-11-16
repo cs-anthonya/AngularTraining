@@ -1,0 +1,56 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <h1>Tasks</h1>
+            <button type="button" class="btn btn-primary" (click)="create()">Add Task</button>
+        </div>
+        <div class="col-4">
+            <div class="col-12">Pending</div>
+            
+            <div class="card col-12" style="width: 18rem;" *ngFor="let task of pendingtasks">
+                <div class="card-body">
+                  <h5 class="card-title">{{ task.title }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{task.created_at | date : 'short'}}</h6>
+                  <p class="card-text">{{ task.description }}</p>
+                  <a href="javascript:;" class="card-link" (click)="update(task.id)">Update</a>
+                  <a href="javascript:;" class="card-link" (click)="delete(task.id)">Delete</a>
+                  <a href="javascript:;" class="card-link" (click)="changeStatus(task.id, 'active')">Move to Active</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-4">
+            <div class="col-12">Inprogress</div>
+            <div class="card col-12" style="width: 18rem;" *ngFor="let task of inprogresstasks">
+                <div class="card-body">
+                  <h5 class="card-title">{{ task.title }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{task.created_at | date : 'short'}}</h6>
+                  <p class="card-text">{{ task.description }}</p>
+                  <a href="javascript:;" class="card-link" (click)="update(task.id)">Update</a>
+                  <a href="javascript:;" class="card-link" (click)="delete(task.id)">Delete</a>
+                  <a href="javascript:;" class="card-link" (click)="changeStatus(task.id, 'done')">Move to Done</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-4">
+            <div class="col-12">Done</div>
+            <div class="card col-12" style="width: 18rem;" *ngFor="let task of donetasks">
+                <div class="card-body">
+                  <h5 class="card-title">{{ task.title }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{task.created_at | date : 'short'}}</h6>
+                  <p class="card-text">{{ task.description }}</p>
+                  <a href="javascript:;" class="card-link" (click)="update(task.id)">Update</a>
+                  <a href="javascript:;" class="card-link" (click)="delete(task.id)">Delete</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-4">
+        <input type="text" placeholder="Time" class="form-control" name="time" [(ngModel)]="time">
+        <input type="text" placeholder="Name of movie" class="form-control" name="moviename" [(ngModel)]="nameOfMovie">
+        <button class="btn btn-primary" (click)="add()" >{{ editmode ? 'update' : 'add'}}</button>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-4">
+        <ul>
+            <li *ngFor="let movie of movies; let index = index">
+                {{ movie.name }} - {{ movie.time }} 
+                <a class="btn btn-danger" href="javascript:;" (click)="delete(index)">delete</a>
+                <a class="btn btn-secondary" href="javascript:;" (click)="editReactiveForm(index)">Edit</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<hr>
+
+
+<div class="row">
+    <div class="col-4">
+        <input type="text" placeholder="keyword" class="form-control" name="keyword" (change)="getMovies()" [(ngModel)]="keyword">
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <app-display [movies]="listofmovies"></app-display>
+    </div>
+</div>
+
+<hr>
+
+<button (click)="redirect()">redirect</button>
+
+<hr>
+
+<form [formGroup]="movieObject">
+    <div class="row">
+        <div class="col-4">
+            <input type="text" formControlName="time" placeholder="Time" class="form-control" name="time" >
+            <input type="text" formControlName="name" placeholder="Name of movie" class="form-control" name="moviename">
+            <button class="btn btn-primary" (click)="addReactiveForm()" >{{ editmode ? 'update' : 'add'}}</button>
+        </div>
+    </div>
+</form>
